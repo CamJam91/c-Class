@@ -1,0 +1,11 @@
+create array with 10 numbers
+cin winning numbers combination in to draw
+call linearSearch function with array, size and draw
+if element mathces cout << winner
+else cout << loser
+
+linearSearch function:
+index(counter) = 0
+position = -1
+found = false
+

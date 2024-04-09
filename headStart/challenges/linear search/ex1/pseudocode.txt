@@ -1,0 +1,21 @@
+initialize array of size (variable: size)
+size  = 18
+input array values
+cin user number to look for
+call linear search function to return number or -1
+if -1: cout number is invalid
+else: cout number is valid
+
+linear search funciton:
+
+found = false
+position = -1
+index = 0
+while found is false && index < number of elements
+    if list[index] is equal to search values
+        found = true
+        position = index
+    end if
+    inex++
+end while
+return position
