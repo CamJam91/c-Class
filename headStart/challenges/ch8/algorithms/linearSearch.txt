@@ -1,0 +1,36 @@
+in linear searches we need to know the size of the array we are searching and of course the value we are searching for. We start at index 0 and see if contained element matches our search. If it does, we stop our search by setting our found bool to true. Since we dont know where our element is that we use to stop our search, we need a while loop: remember while loops are used when we need to loop 
+and unkown amount of iterations. 
+
+pseudodode:
+
+variables passed:
+the array, size of the array, search value
+
+varibles declared in function:
+found = false;
+position = -1;
+index = 0;
+
+while found == false && index < size of array
+	if array[index] == search value
+		found = true
+		positoin = index
+	end if
+	index++
+end while
+return position
+
+int linearSearch(auto array, int size, auto searchValue){	//we pass an array, the size of said array, and value we wish to search for
+	bool found = false; 	//If this is changed we have found or value and end loop
+	int position = -1; 	//illegal array position, we fill this with legal array position or return it, meaning our search failed
+	int index = 0; 		//used as counter and to iterate through array
+
+	while (found == false && index < size){	//if we find our value stop loop, if we run into upper bound of array, stop loop
+		if (array[index] == searchValue{	//we find our value 
+			found = true;			//stop next loop
+			position = index;		//return subscript of array that matches our search value
+		}
+		index++;					//since this is a while loop we need to incriment index at end
+	}
+	return position;		//loop has terminated either bc we found value or have reached upper bound of array, we return either -1 or subscript # that we have assigned
+}

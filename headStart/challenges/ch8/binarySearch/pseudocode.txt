@@ -1,0 +1,29 @@
+binary search algorithm
+perams: array, size, search number
+found = false
+first = 0
+last = size of array -1
+position = -1
+while found == false && first <= last
+    middle = (first + last)/2
+    if (array[middle] == search number)
+        found = true
+        position = middle
+    else if (array[middle > search number])
+        last = middle -1
+    else 
+        first = middle + 1
+    end if
+end while
+return position
+
+bubblesort
+
+for maxElement = each subscript in array, first to last
+	for index = 0 to maxElement - 1
+		if array[index] > array[index + 1]
+			swap array[index] with array[index + 1]
+		end if
+	end for
+end for
+

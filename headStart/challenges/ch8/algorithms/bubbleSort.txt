@@ -1,0 +1,26 @@
+
+pseudocode: 
+
+variables:
+	int maxElement: the upper bound of our array
+	index: used for loop counter like usual
+
+for prescrip: maxElement = size -1, trigger: maxElement > 0, postscrip: decrement maxElement by 1
+	nested for: basic incrimemt with trigger: count is less than maxElement
+		if array subscript of index holds element that is  larger than the next
+			swap these elements
+		end if
+	end nested for
+end for
+
+
+void bubbleSort(int array[], int size){	//we pass an array and size of said array
+	int maxElement;
+	for (maxElement = size-1; maxElement > 0; maxElement--){
+		for (int index = 0; index < maxElement; index++){
+			if (array[index] > array[index+1]{
+				swap(array[index], array[index+1])
+			}
+		}
+	}
+}

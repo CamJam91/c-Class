@@ -1,0 +1,5 @@
+use ifstream to pull line 1 - 4 and store them in variables wk1 -wk4
+    add wk1 -wk4 then divide by 4. Store value in month january
+repeat for all remaining weeks resulting in 11 more month variables
+use bubbleSort to sort the lowest to highest months
+store lowest month to highest in a seperate data file

@@ -1,0 +1,13 @@
+bubble sort
+
+int select
+minimum = start of array
+for start of array to end of array -1
+    select = minimum;
+    for start of array to end
+        if select > select + count
+            swap
+        end if
+    end for
+    minimum = select + 1
+end for
