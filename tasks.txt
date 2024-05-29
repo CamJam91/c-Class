@@ -1,10 +1,19 @@
-Week 2: Create resume
+Week 3: 
+Create resume
 !!Use vectors only
-Readng comprehension
-Quiz
-algorithms assignment
+!!functions do one thing
 
-Mon: Reading comprehension, work on assignment
-tues: quiz, resume, reread ch9 pt1
-wed: work on assignment
+syntax errors discussion
+pointers assignemnt 1
+finish assignemnet week 2
+finsih assignemnt week 1
+	extra:
+finsh pointers chapter
 
+tues:
+syntax errors discussion post
+assignemnt work **CHECK**
+
+Wed:
+Syntax errors discussion post
+week 2 assignemnt finish

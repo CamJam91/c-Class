@@ -62,35 +62,43 @@ int showMenu(){
 void showArrays(string console[], float price[], int size){
     cout << "Console" << setw(50) << "Price" << endl;
     for (int count = 0; count < size; count++){
-        cout << console[count] << setw(50) <<  price[count] << endl;
+        cout << console[count] << setw(50-(console[count].length())) << "$" << price[count] << endl;
     }
+    cout << "\n\n";
 }
 
 void lookUpPrices(string console[], float price[], int arraySize){
-   int SIZE = 40;
-   char consoleLookup[SIZE];
-   char userString[SIZE];
+   bool found = false;
+   int SIZE = 100; //make sure our c strings are large enough
+   char consoleLookup[SIZE]; //destination for strings, the rows [arraySize] each hold a different console
+   char userString[SIZE]; //for user input
 
+   cout << "Enter the console you are looking for." << endl;
    cin.ignore(); //flush buffer
    cin.getline(userString,SIZE); //get line from user
 
-	   strcpy(consoleLookup, console.c_string()); //copy string to char so we can use strcmp
-	   if (strcmp(consoleLookup,userString) == 0)
-		   cout << "YUP";
-	   else
-		   cout << "Nope";
+   for (int count = 0; count < arraySize && found == false; count++){ //This for loop starts with the first console then compares to user string and does this for each until end of array or a match is found
+	   strcpy(consoleLookup, console[count].c_str()); //copy string to char so we can use strcmp
+	   if (strcmp(consoleLookup,userString) == 0){ //compare user string with newly copied cstring
+		   cout << "The " << consoleLookup << " is " << "$" << price[count] << endl;
+		   found = true;
+	   }
+   }
+   if (found == false)
+	   cout << "Console not found." << endl;
+   cout << "\n\n";
 }
 
 void sortPrices(string console[], float price[], int size){
-    int minimum = 0;
-    for (int countI = 0; countI < size - 1; countI++){
-        minimum = countI;
+    int minimumIndex, minimumValue;
+    for (int countI = 0; countI < (size - 1); countI++){
+        minimumIndex = countI;
+	minimumValue = console[countI]
         for (int countJ = countI + 1; countJ < size; countJ++){
-            if (price[minimum] < price[countJ])
+            if (price[countJ] < minimumValue)
                 swap(price[minimum], price[countJ]);
                 swap(console[minimum], console[countJ]); //make sure to swap console name to keep arrays in parallel
         }
-        minimum++;
     }
     cout << "Prices are sorted in descending order" << endl << endl;
 }

@@ -1,0 +1,13 @@
+int k
+int nMembers = number of elements in array
+int currentMemebers[nMembers]
+int memberID = ?
+bool isAMember
+
+if any element in currentMembers = memberID
+	isAMember = true
+else
+	isAMember = false
+
+
+

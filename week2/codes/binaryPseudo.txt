@@ -1,0 +1,19 @@
+
+first = 0
+last = last element in array
+found = false
+position = -1
+
+while found != true and first is <= last
+	middle = element halfway between array[first] and array[last]
+	if array[middle] == target value
+		found = true
+		position = middle
+	else if array[middle] is > target value
+		last = middle -1
+	else
+		first = middle + 1
+	end if
+end while
+return position
+

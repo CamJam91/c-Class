@@ -1,0 +1,15 @@
+function isSorted
+args:
+cin >> int testArray[]
+cin >> int arraySize
+cin >> bool ascending
+
+if (ascending){
+	bool sorted = true;
+	while (sorted == true && element < size)
+		if (!(testArray[element] <= testArray[element + 1]))
+			sorted = false;
+		element++;
+		}
+if (!ascending
+

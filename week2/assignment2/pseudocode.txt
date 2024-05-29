@@ -1,3 +1,16 @@
+analysis:
+I need to take in data from a file and manioulate it in multiple 
+ways, including displaying it, searching it, sorting in it
+
+**Remember**
+    Keep funcions void
+    have functions do only one thing
+    validate input: user and file
+    use do while loop for menu
+
+
+
+
 bubble sort
 
 int select
@@ -11,3 +24,4 @@ for start of array to end of array -1
     end for
     minimum = select + 1
 end for
+

@@ -1,0 +1,35 @@
+analysis:
+I need to create a program that takes in int values that represent rent prices from std in and stores them in an array
+
+a menu will be the first option to pop up. Use a do while (!exit) loop
+	call this menu with getMenuItem function store value in userChoice
+a. enter rent amount
+	call enterRents
+b. sort amount ascending
+	selection sort, call selectionSort function
+c. display amounts
+	displayRents function
+d display memory locaiton
+	call displayMemoryLocations function, use reference operator
+
+**Remember**
+keep functions void and pass arguments that need affected by reference
+keep functions to only one thing
+Show two decimal places with money and use a $ sign
+use pointers to display rent prices
+
+Design 
+
+variables: userOption, int rent vector
+call menu function
+	menu function calls various functions
+enter rents
+	for loop: cin to each sub in rent array use push for vector fill
+display rents
+	validate if rent array has been filled 
+	for loop displays rent prices, use pointers not an array
+display memory locations
+	for loop to show locations in memory of each item in the array
+selection sort
+	use seleciton sort
+

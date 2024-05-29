@@ -1,0 +1,19 @@
+initialize a vector that holds list of 5 groups of numbers
+	2d vector? or just put numbers in order
+allow user to enter 5 digits tp match against said vector
+	cin a vector.
+perform a linear searchthrough the list of player numbers
+	use for and == ?
+
+
+pseudocode: 
+initialize 2d vector with 10 rows of 5 numbers
+create a dynamic vector to hold user vector
+prompt and cin 5 numbers for user vector
+
+linear search function:
+	for each number in set vector
+		for each number in user vector
+			if current number != column number
+			break
+			

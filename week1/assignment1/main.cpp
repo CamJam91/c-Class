@@ -1,4 +1,4 @@
-//Cameron Murphy
+//Murphy C++ Review
 //CIS1202 201
 // May 13 2024
 
@@ -26,11 +26,12 @@ int main(){
     loadArrays(product, quantity, cost, products);
     calculateValues(quantity, cost, value, products);
     displayTable(product, quantity, cost, value, products);
+    return 0;
 }
 
 void loadArrays(string product[], int quantity[], float cost[], int& productCount){
     ifstream productFile; //create input object to access outside file 
-    productFile.open("./itemData.txt");
+    productFile.open("./bunny.txt");
     productCount = 0; //for keeping track of products
     while (productFile){    //while loop terminates if productFile has no input left
         productFile >> product[productCount];   //fill product code
