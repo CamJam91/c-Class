@@ -1,13 +1,14 @@
-//Cameron Murphy
+//Murphy, Cameron Searching and sorting algorithms
 //CIS 1202 201
 //May 15 2024
 #include<iostream>
 #include<fstream>
 #include<string>
 #include<iomanip>
+#include<cstring>
 using namespace std;
 
-void loadArrays(string[], float[],int&);
+void loadArrays(string[], float[],int&, ifstream&);
 void showArrays(string[], float[], int);
 void lookUpPrices(string[], float[], int);
 void sortPrices(string[], float[], int);
@@ -16,14 +17,16 @@ void swap(int&, int&);
 int showMenu();
 
 int main(){
+    ifstream consoleData; //we keep this open so that it can be used in lookUpPrices
     const int SIZE = 20;
     int arraySize = 0; //the size of filled subscripts
     //arrays
-    string console[SIZE];
+    string console[SIZE]; //parallel arrays vvv
     float consolePrice[SIZE];
     int userOption = 1; //for menu option
+
     cout << setprecision(2) << fixed;
-    loadArrays(console, consolePrice, arraySize);
+    loadArrays(console, consolePrice, arraySize, consoleData); //call load arrays to fill our console list from file
 
     do {
         if (userOption < 1 || userOption > 5)
@@ -40,6 +43,9 @@ int main(){
             break;
         }
     } while (userOption != 5);
+
+    consoleData.close();
+    return 0;
 }
 
 int showMenu(){
@@ -60,8 +66,19 @@ void showArrays(string console[], float price[], int size){
     }
 }
 
-void lookUpPrices(string console[], float price[], int size){
-    
+void lookUpPrices(string console[], float price[], int arraySize){
+   int SIZE = 40;
+   char consoleLookup[SIZE];
+   char userString[SIZE];
+
+   cin.ignore(); //flush buffer
+   cin.getline(userString,SIZE); //get line from user
+
+	   strcpy(consoleLookup, console.c_string()); //copy string to char so we can use strcmp
+	   if (strcmp(consoleLookup,userString) == 0)
+		   cout << "YUP";
+	   else
+		   cout << "Nope";
 }
 
 void sortPrices(string console[], float price[], int size){
@@ -91,12 +108,13 @@ void highestPrice(string console[], float price[], int size){
 }
 
 
-void loadArrays(string nameArray[], float priceArray[], int& size){
-    ifstream consoleData;
-    consoleData.open("./consoleFile.txt");
+void loadArrays(string nameArray[], float priceArray[], int& size, ifstream& consoleData){
+    consoleData.open("./consoleFile.txt"); 
 
-    if (!consoleData)   //make sure our file was opened properly
-        cout << "ERROR" << endl;
+    if (!consoleData){ //validate of file loads or exit program
+	    cout << "Error loading console data from file...exiting.\n";
+	    exit(1);
+    }
 
     int counter = 0;
     while (getline(consoleData, nameArray[counter])){ //fill console with name
