@@ -10,8 +10,8 @@ using namespace std;
 
 int getMenuItem();
 void enterRents(vector<float>&);
-void displayRents(vector<float>);
-void displayMemoryLocations(vector<float>);
+void displayRents(const vector<float>);
+void displayMemoryLocations(const vector<float>);
 
 
 int main(){
@@ -28,7 +28,7 @@ int main(){
 				break;
 			case 3: displayMemoryLocations(rentPrices);
 				break;
-			case 4: //selectionSort(rentPrices);	
+			case 4: selectionSort(rentPrices, rentPrices.size());	
 				break;
 		}
 	}while (userOption != 5);
@@ -40,7 +40,7 @@ int getMenuItem(){
 	int userOption;
 	//prompt user
 	cout << "Choose an option: " << endl;
-	cout << "1.Enter rent prices\n2.Display rent prices\n3.Display memory locations\n4.Sort prices high to low\n5.Exit\n>>";
+	cout << "1.Enter rent prices\n2.Display rent prices\n3.Display memory locations\n4.Sort prices low to high\n5.Exit\n>>";
 	//call user validation function
 	userOption = userValidation("Please enter a valid option 1 - 5\n",1,5); 
 	return userOption;
@@ -60,10 +60,18 @@ void enterRents(vector<float>& rentPrices){
 	}while (userOption != 'N');
 }
 
-void displayRents(vector<float> rentPrices){
-	cout << "display rents call" << endl;
+	//simple for loop to display rent prices, the loop uses size() to figure the upper bound of the vector
+void displayRents(const vector<float> rentPrices){
+	cout << "Rent prices" << endl;
+	for (int count = 0; count < rentPrices.size(); count++) //use size() to stop loop at last vector element
+		cout << rentPrices[count] << endl;
+	cout << "\n\n";
 }
 
-void displayMemoryLocations(vector<float> rentPrices){
-	cout << "display memory location" << endl;
+	//This function is identical to displayRents except that it uses & to show an address
+void displayMemoryLocations(const vector<float> rentPrices){
+	cout << "The memory location of Rent prices" << endl;
+	for (int count = 0; count < rentPrices.size(); count++)
+		cout << rentPrices[count] << " resides at address: " << &rentPrices[count] << endl;
+	cout << "\n\n";
 }
