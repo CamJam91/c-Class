@@ -1,0 +1,21 @@
+Test & implimentation:
+test user prompt **check**
+
+test user validation header **CHECK**
+
+create array load function
+test vector push before any loops **CHECK**
+test user validation overload function for floats **CHECK**
+
+displayrets function
+use const to pass vector 
+
+display memory location
+use const to pass vector
+
+test selection sort on loaded array
+
+ensure that sort is properly called **CHECK**
+
+discretionary tests:
+ in enterRents change userChoice to uppercase so that lowercase chars are valid as well

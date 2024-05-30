@@ -1,6 +1,11 @@
 analysis:
 I need to create a program that takes in int values that represent rent prices from std in and stores them in an array
 
+//Can I put any functions in a header file and call them that way?
+!!Put descriptions for functions above them
+!!Document major switches and loops
+!!Show two decimal places with money and use a $ sign
+
 a menu will be the first option to pop up. Use a do while (!exit) loop
 	call this menu with getMenuItem function store value in userChoice
 a. enter rent amount
@@ -11,12 +16,6 @@ c. display amounts
 	displayRents function
 d display memory locaiton
 	call displayMemoryLocations function, use reference operator
-
-**Remember**
-keep functions void and pass arguments that need affected by reference
-keep functions to only one thing
-Show two decimal places with money and use a $ sign
-use pointers to display rent prices
 
 Design 
 
@@ -32,4 +31,9 @@ display memory locations
 	for loop to show locations in memory of each item in the array
 selection sort
 	use seleciton sort
+	create this in a header
+
+step 1 selection Sort header
+
+
 
