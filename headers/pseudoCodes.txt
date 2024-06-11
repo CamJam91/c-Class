@@ -1,0 +1,20 @@
+enter Rents function:
+
+variables: vector rent price, size of vector, userChoice
+
+
+do 
+	prompt user to enter rent price
+	cin >> price
+	userfloat validation
+	push vector by price
+	cin >> userChoice
+	userChar validation
+	change userChoice to upperCase
+while (user does not exit with userChoice)
+
+
+display rents function:
+for first element to array.size
+	cout << array[count]
+

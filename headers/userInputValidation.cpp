@@ -13,7 +13,7 @@ int main(){
 
 int numberValidation(string errorDisplay){
 	int userNum;
-	while (!(cin >> userNum)){
+	while (!(cin >> userNum || cin.fail())){
 		cout << errorDisplay; //displays error message to user
 		cin.clear(); //reset error state so we can cin again
 		cin.ignore(); //flush buffer
