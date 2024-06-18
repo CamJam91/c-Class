@@ -1,0 +1,39 @@
+create user menu with do while loop
+stub all functions
+
+Input functions:
+Enter weights menu:
+	enter a new excercise and weight
+	enter weight by searching excercises
+	enter weight by showing all excercises and ginving userOption number 
+	**enter weight by workout
+
+output functions:
+	show tonnage
+		show tonnage by range or default all
+	show all days
+	search for day
+	search for workout
+
+file function:
+open file
+
+search functions:
+
+sort functions:
+
+math functions:
+	tonnage calculator
+
+**indicates non-functional
+
+SearchLift function: 
+has to be able to work with add lift, add volume and display volume, this mean it needs to do 2 things: 
+	search the database for a lift and return if it exists in the database or not (position doesn't matter)
+	search the database for a lift and return its position
+
+	pseudocode:
+	for each element of an array
+	if the element exists in the array, 
+	return its prosition
+	else return -1
