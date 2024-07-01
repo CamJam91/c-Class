@@ -1,7 +1,7 @@
 #include<iostream>
 #include<fstream>
+#include<filesystem>
 #include<inputValidation.h>
-#include<cstring>
 using namespace std;
 
 const int NAME_SIZE = 40;
@@ -14,15 +14,16 @@ struct Product{
 
 //prototypes
 void showMenu();
-void createFile(fstream&);
+void createFile(fstream&, filesystem::path);
 void displayFile(fstream&);
 void displayRecord(fstream&, int);
 void modifyRecord(fstream&);
-void fileTest(fstream&);
+int fileTest(const fstream&);
 
 int main(){
-   fstream productFile; //create our fstream object
-   createFile(productFile);
+   filesystem::path productPath{"C:\\Users\\camer\\Documents\\c-Class\\week6\\products.dat"};
+   fstream productFile(productPath, ios::in | ios::out | ios::binary); //create our fstream object
+   createFile(productFile, productPath);
    int userOption = 0;
    do{
     showMenu();
@@ -35,36 +36,41 @@ int main(){
    return 0;
 }
 
-void createFile(fstream& productFile){
-    productFile.open("products.txt", ios::in | ios:: out);
-    fileTest(productFile);
+    //since the file is not created yet if we open it for input and output we will get an error. So here , we open for output then write,
+    //we can open for input later
+void createFile(fstream& productFile, filesystem::path productPath){
+    int notCreated = fileTest(productFile); //check that file exists
+    if (notCreated){
+        productFile.open(productPath, ios::out | ios::binary);
+    }
+
     //Create products to fill in file
-    Product radio; 
-    radio.number = 12345; 
-    strcpy(radio.name, "radio"); 
-    radio.price = 11.99; 
-    radio.quantity = 5; 
+    Product radio{12345, {'r','a','d','i','o'},11.99, 5} ;
     Product wand{54321, {'w','a','n','d'}, 900.01, 1};
     Product keyTar {55555, {'K','e','y','t','a','r'}, 99.99, 12};
 
         //write products to file
-    productFile.write(reinterpret_cast<char *>(&radio), sizeof(radio));
-    productFile.write(reinterpret_cast<char *>(&wand), sizeof(wand));
-    productFile.write(reinterpret_cast<char *>(&keyTar), sizeof(keyTar));
+    productFile.write(reinterpret_cast<char *>(&radio), sizeof(Product));
+    productFile.write(reinterpret_cast<char *>(&wand), sizeof(Product));
+    productFile.write(reinterpret_cast<char *>(&keyTar), sizeof(Product));
+
+    productFile.close(); //close the file
+    productFile.open(productPath, ios::in | ios::binary); //reopen the file for reading
 }
 
 void displayFile(fstream& productFile){
-    
-    fileTest(productFile);
+    fileTest(productFile); //make sure file exists
     productFile.clear(ios::eofbit); //clear end of file flag
     productFile.seekg(0, ios::beg); //seek beginning of file
-    while (!productFile.eof()){ //loops as long as end of product file has not been reached
-        Product productRead;
-        productFile.read(reinterpret_cast<char *>(&productRead), sizeof(productRead));
-        printf("Product: %s\n", productRead.name);
-        printf("Product#: %d\n", productRead.number);
-        printf("Price: %d\n", productRead.price);
-        printf("Quantity: %d\n", productRead.quantity);
+    string name = ""; //stores product info for reading
+    int count = 0;
+    while (count < 3){ //loops as long as end of product file has not been reached
+        productFile.read(reinterpret_cast<char*>(&name), sizeof(string));
+        printf("Product: %s\n", name);
+        //printf("Product#: %d\n", productRead.number);
+        //printf("Price: %d\n", productRead.price);
+        //printf("Quantity: %d\n", productRead.quantity);
+        count++;
     }
 
 }
@@ -72,9 +78,9 @@ void showMenu(){
     printf("\n1.Display the entire inventory \n2.Display a product \n3.Modify a product \n4.Exit\n>>");
 }
 
-void fileTest(fstream& productFile){
+int fileTest(const fstream& productFile){
     if (productFile.fail()){
-        printf("ERROR: Product file could not be created");
-        exit(1);
-    }
+        return 1;
+    }else
+        return 0;
 }

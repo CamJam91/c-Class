@@ -35,4 +35,15 @@ char userValidation(string errorDisplay, char confirm, char deny){
         return userChar;
 }
 
+string stringValidation(string errorDisplay, int lowerBound, int upperBound){
+        string userString;
+        while (!(getline(cin, userString)) || (userString.size() < lowerBound) || (userString.size() > upperBound)){
+                cout << errorDisplay; //displays error message to user
+                cin.clear(); //reset error state so we can cin again
+                cin.ignore(); //flush buffer
+        }
+        return userString;
+}
+
+
 
