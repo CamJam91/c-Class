@@ -1,6 +1,5 @@
 #include<iostream>
 #include<fstream>
-#include<filesystem>
 #include<inputValidation.h>
 using namespace std;
 
@@ -14,16 +13,15 @@ struct Product{
 
 //prototypes
 void showMenu();
-void createFile(fstream&, filesystem::path);
+void createFile(fstream&);
 void displayFile(fstream&);
 void displayRecord(fstream&, int);
 void modifyRecord(fstream&);
 int fileTest(const fstream&);
 
 int main(){
-   filesystem::path productPath{"C:\\Users\\camer\\Documents\\c-Class\\week6\\products.dat"};
-   fstream productFile(productPath, ios::in | ios::out | ios::binary); //create our fstream object
-   createFile(productFile, productPath);
+    fstream productFile;
+   createFile(productFile);
    int userOption = 0;
    do{
     showMenu();
@@ -38,10 +36,10 @@ int main(){
 
     //since the file is not created yet if we open it for input and output we will get an error. So here , we open for output then write,
     //we can open for input later
-void createFile(fstream& productFile, filesystem::path productPath){
+void createFile(fstream& productFile){
     int notCreated = fileTest(productFile); //check that file exists
     if (notCreated){
-        productFile.open(productPath, ios::out | ios::binary);
+        productFile.open("productFile.dat", ios::out | ios::binary);
     }
 
     //Create products to fill in file
@@ -55,23 +53,28 @@ void createFile(fstream& productFile, filesystem::path productPath){
     productFile.write(reinterpret_cast<char *>(&keyTar), sizeof(Product));
 
     productFile.close(); //close the file
-    productFile.open(productPath, ios::in | ios::binary); //reopen the file for reading
+    productFile.open("productFile.dat", ios::in | ios::binary); //reopen the file for reading
 }
 
 void displayFile(fstream& productFile){
-    fileTest(productFile); //make sure file exists
-    productFile.clear(ios::eofbit); //clear end of file flag
+    productFile.open("productFile.dat", ios::in | ios::binary); //reopen the file for reading
+    productFile.clear(); //clear end of file flag
     productFile.seekg(0, ios::beg); //seek beginning of file
     string name = ""; //stores product info for reading
     int count = 0;
-    while (count < 3){ //loops as long as end of product file has not been reached
+    Product productRead;
+    productFile.read(reinterpret_cast<char*>(&productRead),sizeof(productRead));
+    //printf("Product: %s\n", productRead.name.c_str());
+    printf("Price: %f\n", productRead.price);
+    printf("Quantity: %d\n", productRead.quantity);
+    /*while (count < 3){ //loops as longs end of product file has not been reached
         productFile.read(reinterpret_cast<char*>(&name), sizeof(string));
-        printf("Product: %s\n", name);
-        //printf("Product#: %d\n", productRead.number);
-        //printf("Price: %d\n", productRead.price);
-        //printf("Quantity: %d\n", productRead.quantity);
+        printf("Product: %s\n", name.c_str());
+        printf("Product#: %d\n", productRead.number);
+        printf("Price: %d\n", productRead.price);
+        printf("Quantity: %d\n", productRead.quantity);
         count++;
-    }
+    }*/
 
 }
 void showMenu(){
