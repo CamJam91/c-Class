@@ -5,7 +5,6 @@
 #include<inputValidation.h>
 #include<string>
 #include<cstring>
-#include<stdio.h>
 using namespace std;
 
 const int NAME_SIZE = 40;
