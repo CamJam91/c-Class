@@ -14,11 +14,11 @@ class Publication{
     float price;
     int year,
     stock;
+    static string mediumConvert(PublicationType type); //only used by this class
 
         //member functions
     public:
-        Publication::Publication(){
-
+        Publication(){
         };
             //setters
             //Store the parameters in the Publication member variables. 
