@@ -1,7 +1,7 @@
 #include "../include/Publication.h"
 #include <string>
 #include <iostream>
-#include "../include/inputValidation.h"
+#include <inputValidation.h>
 using namespace std;
 
 
