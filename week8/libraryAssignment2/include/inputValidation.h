@@ -37,6 +37,7 @@ char userValidation(string errorDisplay, char confirm, char deny){
 
 string stringValidation(string errorDisplay, int lowerBound, int upperBound){
         string userString;
+        cin.clear();
         cin.ignore();
         while (!(getline(cin, userString)) || (userString.size() < lowerBound) || (userString.size() > upperBound)){
                 cout << errorDisplay; //displays error message to user
