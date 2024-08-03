@@ -20,6 +20,7 @@ class LiftControl{
         int addVolume(string lift, int reps, double weight);
 
         //file operations
+        static void createFile(string filename);
         void pushVolume(fstream& repFile, fstream& weightFile, Lift lift);
         void getVolume(fstream& repFile, fstream& weightFile, Lift lift);
         void pushName(fstream& liftFile, Lift lift);

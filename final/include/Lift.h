@@ -23,14 +23,12 @@ class Lift{
     string getName();
     int getSets(); //returns the number of sets in this lift (weight/reps array size)
     int getReps(int set); //return the reps that live at a certain position safeguards against bounds errors
-    int getWeight(int set); //return the weight that lives at a certain position, safeguards against bounds errors
+    double getWeight(int set); //return the weight that lives at a certain position, safeguards against bounds errors
     vector<int>* getRepsList(); 
     vector<double>* getWeightList(); 
 
         //setters
             //add a set to this lift (weight and reps parallel vector)
     void addSet(int userReps, double userWeight);
-    void addRep(int rep);
-    void addWeight(double weight);
     };
 #endif

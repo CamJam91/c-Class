@@ -16,7 +16,7 @@ int Lift::getReps(int set){ //return the reps that live at a certain position sa
             throw boundsException(set);
         }
     }
-int Lift::getWeight(int set){ //return the weight that lives at a certain position, safeguards against bounds errors
+double Lift::getWeight(int set){ //return the weight that lives at a certain position, safeguards against bounds errors
         if (weights.size() >= set){
             return weights.size(); 
         }else{
@@ -43,9 +43,3 @@ void Lift::addSet(int userReps, double userWeight){
             weights.push_back(userWeight);
         }
     };
-void Lift::addRep(int rep){
-    reps.push_back(rep);
-}
-void Lift::addWeight(double weight){
-    weights.push_back(weight);
-}

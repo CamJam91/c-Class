@@ -38,7 +38,7 @@ class rangeException{
         }
 };
 
-    //throw an ecxeption if the status is not desired
+    //throw an exception if the status is not desired
 class fileException{
     private:
         ios::iostate status;

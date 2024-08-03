@@ -47,7 +47,10 @@ int LiftControl::addVolume(string lift, int reps, double weight){
 }
 
 //file operations
-    //checks if file is good for appending and then writes parameter data to file
+void LiftControl::createFile(string fileName){
+    fstream newFile(fileName, ios::out | ios::binary);
+    newFile.close();
+}
 
     //checks if files are good for appending data then writes parameter data to file
 void LiftControl::pushVolume(fstream& repFile, fstream& weightFile, Lift lift){
@@ -68,10 +71,8 @@ void LiftControl::getVolume(fstream& repFile, fstream& weightFile, Lift lift){
      int tempRep; //for holding reps
      double tempWeight; //for holding weight
     while(repFile.read(reinterpret_cast<char*>(&tempRep), sizeof(int))){ //read into vector until end of file
-        lift.addRep(tempRep); //call addRep member
-    }
-    while(weightFile.read(reinterpret_cast<char*>(&tempWeight), sizeof(int))){
-        lift.addWeight(tempWeight);
+        weightFile.read(reinterpret_cast<char*>(&tempWeight), sizeof(double)); //if there is a rep int left there must be a weight double left
+        lift.addSet(tempRep, tempWeight); //push reps and weight
     }
 }
 
